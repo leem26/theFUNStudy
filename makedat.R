@@ -35,14 +35,15 @@ generate_fun <- function(n) {
   return(data.frame(U.W, U.A, U.Y, W, A.con, A.bin, Y.con, Y.bin))
 }
 
+set.seed(123)
 ObsData.big   <- generate_fun(100000)
 ObsData.small <- generate_fun(50)
 
 # plot(density(Y.con[A.bin==1], adjust=2), col="blue") 
 # lines(density(Y.con[A.bin==0]), col="red") 
 
-write.csv(ObsData.big,   "FUN_data_100000obs.csv", row.names = FALSE)
-write.csv(ObsData.small, "FUN_data_50obs.csv",     row.names = FALSE)
+write.csv(ObsData.big,   "data/FUN_data_100000obs.csv", row.names = FALSE)
+write.csv(ObsData.small, "data/FUN_data_50obs.csv",     row.names = FALSE)
 
 
 
