@@ -15,7 +15,8 @@ was collected:
 During the primary wave of data collection, a large sample of 100,000 doctoral students were surveyed. 
 Data on these individuals can be found in "data/FUN_data_100000obs.csv". Six months later, a smaller sample
 of 50 doctoral students from a recently-opened small academic institution participated in the study. 
-Data on this smaller subsample can be found in "data/FUN_data_50obs.csv". 
+Data on this smaller subsample can be found in "data/FUN_data_50obs.csv". For those interested, 
+these data were simulated using the "makeDat.R" script. 
 
 To download this data to your local computer directly from GitHub, you can use the following commands in `R`:
 
