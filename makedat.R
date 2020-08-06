@@ -14,6 +14,7 @@
 # A.bin   :  Whether the student slept at least 8 hours last night
 # W       :  Whether or not the doctoral student is in the "dissertating" phase
 # Y.con   :  Number of times the student used a food delivery service last week 
+#            (continuous scale, think for meal fractionals like snacks, alcohols)
 # Y.bin   :  Whether the student ordered delivery for at least 10.5 meals last week
 #            (i.e. half of weekly meals = (7*3)/2 )
 
@@ -22,7 +23,7 @@ generate_fun <- function(n) {
 	# exogenous variables
 	U.W  = runif(n, min = 1, max = 10)
 	U.A  = rnorm(n, mean = 0, sd = 1.5)
-	U.Y  = rpois(n, lambda = 2)
+	U.Y  = rnorm(n, mean = 0, sd = 2)
 
 	# endogenous variables
   W    = as.numeric(U.W > 7.0)
@@ -36,7 +37,7 @@ generate_fun <- function(n) {
 }
 
 set.seed(123)
-ObsData.big   <- generate_fun(100000)
+ObsData.big   <- generate_fun(10000)
 ObsData.small <- generate_fun(50)
 
 # plot(density(Y.con[A.bin==1], adjust=2), col="blue") 
@@ -44,11 +45,6 @@ ObsData.small <- generate_fun(50)
 
 write.csv(ObsData.big,   "data/FUN_data_100000obs.csv", row.names = FALSE)
 write.csv(ObsData.small, "data/FUN_data_50obs.csv",     row.names = FALSE)
-
-
-
-
-
 
 
 
