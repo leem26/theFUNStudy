@@ -23,13 +23,15 @@ generate_fun <- function(n) {
 	# exogenous variables
 	U.W  = runif(n, min = 1, max = 10)
 	U.A  = rnorm(n, mean = 0, sd = 1.5)
-	U.Y  = rnorm(n, mean = 0, sd = 2)
+	U.Y  = rnorm(n, mean = 0, sd = 1.5)
 
 	# endogenous variables
-  W    = as.numeric(U.W > 7.0)
+  W        = as.numeric(U.W > 7.0)
   A.con    = (W == 1)*(5.0 + U.A) + (W == 0)*(7.0 + U.A)
   A.bin    = ifelse(A.con >= 8, 1, 0)
-  Y.con    = (W == 1)*(10.0 + U.Y) + (W == 0)*(3.0 + U.Y)
+  Y.con    = ifelse(
+               (W == 1)*(10.0 + U.Y) + (W == 0)*(3.0 + U.Y) < 0, 0,
+               (W == 1)*(10.0 + U.Y) + (W == 0)*(3.0 + U.Y))
   Y.bin    = ifelse(Y.con >= 10.5, 1, 0) # half of weekly meals
   
   # return data.frame object
